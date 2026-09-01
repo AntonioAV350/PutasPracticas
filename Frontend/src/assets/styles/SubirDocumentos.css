@@ -1,0 +1,98 @@
+.page {
+  min-height: calc(100vh - var(--bars-height));
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px 24px;
+}
+.page-title {
+  margin: 0;
+  color: #173a66;
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.doc-card {
+  width: 100%;
+  min-height: 120px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e7e7e7;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.doc-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.doc-left svg {
+  width: 40px;
+  height: 40px;
+}
+.doc-title {
+  font-weight: 800;
+  color: #143a66;
+}
+
+.doc-actions {
+  display: flex;
+  gap: 10px;
+}
+.btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: #0b5ed7;
+  color: #fff;
+}
+.btn-danger {
+  background: #cf2626;
+  color: #fff;
+}
+.btn-gold {
+  background: #d1af1c;
+  color: #143a66;
+}
+
+.file-name {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.hidden-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}

@@ -1,0 +1,27 @@
+:root {
+  --footer-h: 60px;
+}
+
+.footer-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: env(safe-area-inset-bottom, 0px);
+  height: var(--footer-h);
+  background: var(--footer-bg, #fff);
+  color: var(--footer-fg, #143a66);
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 1px 0 rgba(0, 0, 0, 0.06),
+    0 -4px 18px rgba(0, 0, 0, 0.06);
+  z-index: 1000;
+  padding: 0 16px;
+}
+
+.page {
+  padding-bottom: calc(var(--footer-h) + env(safe-area-inset-bottom, 0px));
+}

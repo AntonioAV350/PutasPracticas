@@ -1,0 +1,237 @@
+/* --- base, con safe-area --- */
+.goldbar {
+  background: var(--unach-gold);
+  color: var(--unach-navy);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  padding-top: env(safe-area-inset-top, 0px); /* notch */
+}
+
+.goldbar__inner {
+  width: 100%;
+  margin: 0;
+  padding: 14px 28px; /* se ajusta en móviles abajo */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* IZQUIERDA */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+.logo {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: var(--unach-navy);
+}
+.logo svg {
+  width: 100%;
+  height: 100%;
+}
+.title .uni {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  line-height: 1.15;
+}
+.title .sys {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.15;
+}
+
+/* DERECHA */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  margin-left: auto;
+}
+.info {
+  text-align: right;
+  /* ANTES: white-space: nowrap;  -> esto cortaba en iPhone */
+  white-space: normal; /* permite salto de línea */
+  max-width: min(60vw, 260px); /* evita desbordamiento en teléfonos */
+}
+.info .name {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+.info .fac {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  color: var(--unach-navy);
+}
+.avatar svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+/* iPhone / ≤430px — COMPACTA+ (la anterior al MICRO) */
+@media (max-width: 430px) {
+  .goldbar__inner {
+    padding: 4px 8px; /* menos padding que el default */
+    display: grid;
+    grid-template-columns: 1fr auto; /* derecha puede bajar si no cabe */
+    row-gap: 2px;
+    column-gap: 8px;
+  }
+
+  .left {
+    gap: 6px;
+  }
+  .logo {
+    width: 18px;
+    height: 18px;
+  } /* icono más chico */
+  .avatar {
+    width: 20px;
+    height: 20px;
+  } /* avatar más chico */
+
+  /* sin tracking para ahorrar ancho/alto */
+  .title .uni,
+  .title .sys,
+  .info .name,
+  .info .fac {
+    letter-spacing: 0;
+  }
+
+  /* tipografías compactas con line-height apretado */
+  .title .uni {
+    font-size: clamp(0.72rem, 2.8vw, 0.84rem);
+    line-height: 1.02;
+  }
+  .title .sys {
+    font-size: clamp(0.68rem, 2.6vw, 0.8rem);
+    line-height: 1.02;
+  }
+  .info .name {
+    font-size: clamp(0.72rem, 2.8vw, 0.84rem);
+    line-height: 1.02;
+  }
+  .info .fac {
+    font-size: clamp(0.68rem, 2.6vw, 0.8rem);
+    line-height: 1.02;
+  }
+
+  .info {
+    max-width: min(58vw, 210px); /* evita desbordes sin cortar */
+    white-space: normal;
+  }
+
+  .right {
+    justify-self: end;
+  }
+}
+/* iPhone muy estrecho (SE/zoom alto) */
+@media (max-width: 360px) {
+  .goldbar__inner {
+    padding: 5px 8px;
+  }
+  .logo {
+    width: 18px;
+    height: 18px;
+  }
+  .avatar {
+    width: 20px;
+    height: 20px;
+  }
+  .info {
+    max-width: min(62vw, 200px);
+  }
+}
+
+/* (seguían ya en tu archivo) ajustes intermedios */
+@media (max-width: 760px) {
+  .title .uni,
+  .info .name {
+    font-size: 0.95rem;
+  }
+  .title .sys,
+  .info .fac {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 560px) {
+  .goldbar__inner {
+    padding: 12px 16px;
+  } /* este lo puedes dejar o quitar: el de 430px manda en phones */
+  .logo,
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ===== Desktop / pantallas anchas: restablecer layout original ===== */
+@media (min-width: 768px) {
+  .goldbar__inner {
+    display: flex; /* aseguramos fila */
+    padding: 14px 28px; /* padding normal de desktop */
+    gap: 16px;
+  }
+  .right {
+    margin-left: auto;
+  }
+
+  /* En escritorio NO limites y no permitas saltos de línea */
+  .info {
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  .logo {
+    width: 34px;
+    height: 34px;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+  .title .uni {
+    font-size: 1rem;
+  } /* opcional: fija tamaños como los tenías */
+  .title .sys {
+    font-size: 0.95rem;
+  }
+  .info .name {
+    font-size: 1rem;
+  }
+  .info .fac {
+    font-size: 0.95rem;
+  }
+}
+
+/* (si quieres aún más holgura en pantallas muy grandes) */
+@media (min-width: 1200px) {
+  .title .uni {
+    font-size: 1.05rem;
+  }
+  .title .sys {
+    font-size: 1rem;
+  }
+  .info .name {
+    font-size: 1.05rem;
+  }
+  .info .fac {
+    font-size: 1rem;
+  }
+}
