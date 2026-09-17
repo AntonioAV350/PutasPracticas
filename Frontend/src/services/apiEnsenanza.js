@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const API_URL = "http://169.254.2.40:3000"; // Cambia esto según la URL de tu backend
+import { API_URL } from "./apiUrl";
 
 export default {
   obtenerActividades() {

@@ -1,8 +1,6 @@
 // src/services/authServices.js
 import axios from "axios";
-
-//const API_URL = "http://192.168.1.242:3000"; // sin doble slash final
-const API_URL ="http://10.34.218.212:3000";
+import { API_URL } from "./apiUrl";
 /**
  * Stores authentication data in localStorage.
  * @param {string} token - The authentication token.
@@ -32,7 +30,7 @@ export const loadAuthData = () => {
   }
   return null;
 };
-
+   
 /**
  * payload: { rfc?: string, email?: string, password: string }
  * - Si se envía email, debe ser @unach.mx (el backend también lo valida).

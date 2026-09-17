@@ -222,10 +222,18 @@ export default {
         }
       } catch (err) {
         console.error("[Login] error:", err);
+
+        let title = "Usuario o contraseña inválidos, o sin permisos.";
+        if (err.code === "ERR_NETWORK" || !err.response) {
+          title = "No se pudo conectar con el servidor. Verifica que el backend esté encendido y que estés en la red correcta.";
+        } else if (err.response.status >= 500) {
+          title = "Error del servidor. Intenta de nuevo más tarde.";
+        }
+
         Swal.fire({
           position: "top",
           icon: "error",
-          title: "Usuario o contraseña inválidos, o sin permisos.",
+          title,
           showConfirmButton: true,
         });
       }
